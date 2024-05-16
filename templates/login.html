@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購票網站</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="c w100">
+        <div class="login c">
+            <h3>購票系統登入</h3>
+            <input type="text" id="account_num">
+            <input type="password" id="password_num">
+            <div class="">
+                <button onclick="login()">登入</button>
+                <button onclick="register()">註冊</button>
+            </div>
+        </div>
+    </div>  
+</body>
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+</html>

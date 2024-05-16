@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition</title>
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <h1>Face Recognition</h1>
+        <img id='face' style="display: none;" src="{{ url_for('video_feed') }}" width="800" height="450">
+        <button onclick="startFaceRecognition()">臉部辨識開啟</button>
+        <button onclick="stopFaceRecognition()">臉部辨識關閉</button>
+
+        <video id="videoElement" width="800" height="450" autoplay></video>
+        <button onclick="startCamera()">開啟鏡頭＆開啟鏡頭畫面</button>
+        <button onclick="stopCamera()">關閉鏡頭＆關閉鏡頭畫面</button>
+        <form action="/take_photo" method="post">
+            <button type="submit">拍攝照片</button>
+        </form>
+    </div>
+
+    <script>
+        var videoElement = document.getElementById('videoElement');
+        var face =  document.getElementById('face');
+        var constraints = { video: { width: 800, height: 450 } };
+        
+
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(function(stream) {
+                    videoElement.srcObject = stream;
+                })
+                .catch(function(error) {
+                    console.error('Error accessing the camera:', error);
+                });
+        }
+
+        function startFaceRecognition() {
+
+            face.style.display = 'block';
+    
+        }
+
+        function stopFaceRecognition() {
+            face.style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>
